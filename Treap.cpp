@@ -87,6 +87,7 @@ void RemoveNotOptimized(TreapNode*& node, int key)
 	Split(node, key, less, greater);
 	Split(greater, key + 1, equal, greater);
 	node = Merge(less, greater);
+	delete equal;
 }
 
 
@@ -138,8 +139,23 @@ void Remove(TreapNode*& node, int key)
 	}
 	else
 	{
+		TreapNode* current = node;
 		node = Merge(node->Left, node->Right);
+		delete current;
 	}
+}
+
+
+void FreeTree(TreapNode* node)
+{
+	if (node == nullptr)
+	{
+		return;
+	}
+
+	FreeTree(node->Left);
+	FreeTree(node->Right);
+	delete node;
 }
 
 

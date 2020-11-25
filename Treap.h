@@ -56,4 +56,8 @@ auto Insert(TreapNode*& node, int key, int priority = rand()) -> void;
 /// @param key Удаляемое значение
 void Remove(TreapNode*& node, int key);
 
+/// @brief Очистка памяти
+/// @param node Укзатель на узел корня
+void FreeTree(TreapNode* node);
+
 #endif //_BINARYTREE_H_

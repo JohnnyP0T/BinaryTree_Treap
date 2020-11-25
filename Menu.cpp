@@ -1,8 +1,47 @@
-#include <iostream>
+﻿#include <iostream>
 #include <string>
 #include <exception>
+#include <iomanip>
 
 #include "Menu.h"
+
+
+void PrintTree(TreapNode* node, int indent)
+{
+	if (node != nullptr) {
+		if (node->Right) {
+			PrintTree(node->Right, indent + 4);
+		}
+		if (indent) {
+			std::cout << std::setw(indent) << ' ';
+		}
+		if (node->Right) std::cout << " /\n" << std::setw(indent) << ' ';
+		std::cout << node->Key << "(" << node->Priority << ")" << "\n ";
+		if (node->Left) {
+			std::cout << std::setw(indent) << ' ' << " \\\n";
+			PrintTree(node->Left, indent + 4);
+		}
+	}
+}
+
+
+void PrintTree(BinaryTreeNode* node, int indent)
+{
+	if (node != nullptr) {
+		if (node->Right) {
+			PrintTree(node->Right, indent + 4);
+		}
+		if (indent) {
+			std::cout << std::setw(indent) << ' ';
+		}
+		if (node->Right) std::cout << " /\n" << std::setw(indent) << ' ';
+		std::cout << node->Data << "\n ";
+		if (node->Left) {
+			std::cout << std::setw(indent) << ' ' << " \\\n";
+			PrintTree(node->Left, indent + 4);
+		}
+	}
+}
 
 
 int GetElementConsole()
@@ -30,44 +69,18 @@ int GetElementConsole()
 }
 
 
-void PrintTree(BinaryTreeNode* binaryTreeNode)
-{
-	if(binaryTreeNode == nullptr)
-	{
-		return;
-	}
-	
-	PrintTree(binaryTreeNode->Left);
-	std::cout << " " << binaryTreeNode->Data << " ";
-	PrintTree(binaryTreeNode->Right);
-}
-
-
-void PrintTree(TreapNode* treapNode)
-{
-	if (treapNode == nullptr)
-	{
-		return;
-	}
-
-	PrintTree(treapNode->Left);
-	std::cout << " " << treapNode->Key << " ";
-	PrintTree(treapNode->Right);
-}
-
-
 void Menu(BinaryTree* binaryTree)
 {
 	InitializeTree(binaryTree);
-	int valueForMenu = 0;
-	int valueForTree = 0;
+	int valueForMenu;
+	int valueForTree;
 	bool isValueForPrint = false;
 
 	for(;;)
 	{
 		if(isValueForPrint)
 		{
-			PrintTree(binaryTree->Root);
+			PrintTree(binaryTree->Root, 3);
 		}
 
 		std::cout << "\n+===============================BinarySearchTree+===============================\n"
@@ -93,7 +106,7 @@ void Menu(BinaryTree* binaryTree)
 			{
 				std::cout << "Enter value: ";
 				valueForTree = GetElementConsole();
-				BinaryTreeNode* node = Remove(binaryTree->Root, valueForTree);
+				Remove(binaryTree->Root, valueForTree);
 				break;
 			}
 
@@ -149,6 +162,7 @@ void Menu(BinaryTree* binaryTree)
 
 			case MenuTreeOption::Exit:
 			{
+				FreeTree(binaryTree->Root);
 				return;
 			}
 
@@ -168,15 +182,15 @@ void Menu(Treap* treap)
 {
 	
 	InitializeTree(treap);
-	int valueForMenu = 0;
-	int valueForTree = 0;
+	int valueForMenu;
+	int valueForTree;
 	bool isValueForPrint = false;
 
 	for (;;)
 	{
 		if (isValueForPrint)
 		{
-			PrintTree(treap->Root);
+			PrintTree(treap->Root, 3);
 		}
 
 		std::cout << "\n+===============================BinarySearchTree+===============================\n"
@@ -246,6 +260,7 @@ void Menu(Treap* treap)
 
 			case MenuTreapOption::Exit:
 			{
+				FreeTree(treap->Root);
 				return;
 			}
 

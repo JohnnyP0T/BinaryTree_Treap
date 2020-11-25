@@ -42,5 +42,9 @@ void Insert(BinaryTreeNode*& node, const int value);
 /// @return ”казатель на узел корн€
 BinaryTreeNode* Remove(BinaryTreeNode*& node, const int value);
 
+/// @brief ќчистка пам€ти
+/// @param node ”кзатель на узел корн€
+void FreeTree(BinaryTreeNode* node);
+
 
 #endif //_BINARYTREE_H_

@@ -6,10 +6,9 @@
 /// @brief Узел бинарного дерева
 struct BinaryTreeNode
 {
-	int Data;
 	BinaryTreeNode* Left = nullptr;
 	BinaryTreeNode* Right = nullptr;
+	int Data;
 };
-
 
 #endif //_BINARYTREENODE_H_

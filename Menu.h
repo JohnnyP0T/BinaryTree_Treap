@@ -36,7 +36,8 @@ int GetElementConsole();
 
 /// @brief Печать дерева
 /// @param binaryTreeNode Указатель на узел корня
-void PrintTree(BinaryTreeNode* binaryTreeNode);
+/// /// @param indent Отступ
+void PrintTree(BinaryTreeNode* node, int indent);
 
 /// @brief Меню для бинарого дерева
 /// @param binaryTree Указатель на узел корня

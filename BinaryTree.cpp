@@ -105,19 +105,38 @@ BinaryTreeNode* Remove(BinaryTreeNode*& node, const int value)
 
 	else
 	{
+		BinaryTreeNode* current = nullptr;
 		if(node->Left != nullptr)
 		{
-			node = node->Left;
+			current = node;
+			node = current->Left;
+			delete current;
 		}
 		else if(node->Right != nullptr)
 		{
-			node = node->Right;
+			current = node;
+			node = current->Right;
+			delete current;
 		}
 		else
 		{
+			delete node;
 			node = nullptr;
 		}
 	}
 	
 	return node;
+}
+
+
+void FreeTree(BinaryTreeNode* node)
+{
+	if (node == nullptr)
+	{
+		return;
+	}
+
+	FreeTree(node->Left);
+	FreeTree(node->Right);
+	delete node;
 }

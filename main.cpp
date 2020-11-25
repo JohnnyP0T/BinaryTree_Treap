@@ -1,10 +1,10 @@
 #include "iostream"
 #include "Menu.h"
 
+
 int main()
 {
 	int valueForMenu;
-	
 	for(;;)
 	{
 		std::cout << "1 - Binary Search Tree\n"
