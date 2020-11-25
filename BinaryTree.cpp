@@ -83,26 +83,25 @@ void Insert(BinaryTreeNode*& node, const int value)
 
 
 /// @todo return void;
-/// тут так и должно быть. это надо для рекурсии.
-BinaryTreeNode* Remove(BinaryTreeNode*& node, const int value)
+void Remove(BinaryTreeNode*& node, const int value)
 {
 	if(node == nullptr)
 	{
-		return node;
+		return;
 	}
 
 	if(value < node->Data)
 	{
-		node->Left = Remove(node->Left, value);
+		Remove(node->Left, value);
 	}
 	else if(value > node->Data)
 	{
-		node->Right = Remove(node->Right, value);
+		Remove(node->Right, value);
 	}
 	else if(node->Left != nullptr && node->Right != nullptr)
 	{
 		node->Data = FindMinimal(node->Right)->Data;
-		node->Right = Remove(node->Right, node->Data);
+		Remove(node->Right, node->Data);
 	}
 	else
 	{
@@ -126,7 +125,7 @@ BinaryTreeNode* Remove(BinaryTreeNode*& node, const int value)
 		}
 	}
 	
-	return node;
+	return;
 }
 
 

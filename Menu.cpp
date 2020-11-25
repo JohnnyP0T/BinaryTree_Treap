@@ -31,7 +31,7 @@ void PrintTree(TreapNode* node, int indent)
 	std::cout << node->Key << "(" << node->Priority << ")" << "\n ";
 	if (node->Left) 
 	{
-		std::cout << '\t' << ' ' << " \\\n";
+		std::cout << std::setw(indent) << ' ' << " \\\n";
 		PrintTree(node->Left, indent + 4);
 	}
 }
@@ -39,7 +39,7 @@ void PrintTree(TreapNode* node, int indent)
 
 void PrintTree(BinaryTreeNode* node, int indent)
 {
-	if (node != nullptr)
+	if (node == nullptr)
 	{
 		return;
 	}
@@ -62,7 +62,7 @@ void PrintTree(BinaryTreeNode* node, int indent)
 	std::cout << node->Data << "\n ";
 	if (node->Left) 
 	{
-		std::cout << '\t' << ' ' << " \\\n";
+		std::cout << std::setw(indent) << ' ' << " \\\n";
 		PrintTree(node->Left, indent + 4);
 	}
 	
@@ -126,7 +126,6 @@ void Menu(BinaryTree* binaryTree)
 				Insert(binaryTree->Root, valueForTree);
 				break;
 			}
-
 			case MenuTreeOption::Remove:
 			{
 				std::cout << "Enter value: ";
@@ -134,7 +133,6 @@ void Menu(BinaryTree* binaryTree)
 				Remove(binaryTree->Root, valueForTree);
 				break;
 			}
-
 			case MenuTreeOption::Find:
 			{
 				std::cout << "Enter value: ";
@@ -150,7 +148,6 @@ void Menu(BinaryTree* binaryTree)
 				system("pause");
 				break;
 			}
-
 			case MenuTreeOption::FindMinimal:
 			{
 				try
@@ -164,7 +161,6 @@ void Menu(BinaryTree* binaryTree)
 				system("pause");
 				break;
 			}
-
 			case MenuTreeOption::FindMaximal:
 			{
 				try
@@ -178,13 +174,11 @@ void Menu(BinaryTree* binaryTree)
 				system("pause");
 				break;
 			}
-
 			case MenuTreeOption::Show:
 			{
 				isValueForPrint = true;
 				break;
 			}
-
 			case MenuTreeOption::Exit:
 			{
 				FreeTree(binaryTree->Root);
@@ -236,7 +230,6 @@ void Menu(Treap* treap)
 				InsertNotOptimized(treap->Root, valueForTree);
 				break;
 			}
-
 			case MenuTreapOption::RemoveNotOptimized:
 			{
 				std::cout << "Enter value: ";
@@ -244,7 +237,6 @@ void Menu(Treap* treap)
 				RemoveNotOptimized(treap->Root, valueForTree);
 				break;
 			}
-
 			case MenuTreapOption::Add:
 			{
 				std::cout << "Enter value: ";
@@ -252,7 +244,6 @@ void Menu(Treap* treap)
 				Insert(treap->Root, valueForTree);
 				break;
 			}
-
 			case MenuTreapOption::Remove:
 			{
 				std::cout << "Enter value: ";
@@ -260,7 +251,6 @@ void Menu(Treap* treap)
 				Remove(treap->Root, valueForTree);
 				break;
 			}
-			
 			case MenuTreapOption::Find:
 			{
 				std::cout << "Enter value: ";
@@ -276,13 +266,11 @@ void Menu(Treap* treap)
 				system("pause");
 				break;
 			}
-
 			case MenuTreapOption::Show:
 			{
 				isValueForPrint = true;
 				break;
 			}
-
 			case MenuTreapOption::Exit:
 			{
 				FreeTree(treap->Root);

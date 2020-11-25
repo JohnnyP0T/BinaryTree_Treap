@@ -39,7 +39,7 @@ void Insert(BinaryTreeNode*& node, const int value);
 /// @brief Удаление элемента.
 /// @param node		Указатель на узел корня.
 /// @param value	Значение которое надо удалить.
-BinaryTreeNode* Remove(BinaryTreeNode*& node, const int value);
+void Remove(BinaryTreeNode*& node, const int value);
 
 /// @brief Очистка памяти.
 /// @param node Укзатель на узел корня.
