@@ -8,39 +8,64 @@
 
 void PrintTree(TreapNode* node, int indent)
 {
-	if (node != nullptr) {
-		if (node->Right) {
-			PrintTree(node->Right, indent + 4);
-		}
-		if (indent) {
-			std::cout << std::setw(indent) << ' ';
-		}
-		if (node->Right) std::cout << " /\n" << std::setw(indent) << ' ';
-		std::cout << node->Key << "(" << node->Priority << ")" << "\n ";
-		if (node->Left) {
-			std::cout << std::setw(indent) << ' ' << " \\\n";
-			PrintTree(node->Left, indent + 4);
-		}
+	if (node == nullptr)
+	{
+		return;
+	}
+
+	if (node->Right) 
+	{
+		PrintTree(node->Right, indent + 4);
+	}
+	
+	if (indent) 
+	{
+		std::cout << std::setw(indent) << ' ';
+	}
+	
+	if (node->Right)
+	{
+		std::cout << " /\n" << std::setw(indent) << ' ';
+	}
+	
+	std::cout << node->Key << "(" << node->Priority << ")" << "\n ";
+	if (node->Left) 
+	{
+		std::cout << '\t' << ' ' << " \\\n";
+		PrintTree(node->Left, indent + 4);
 	}
 }
 
 
 void PrintTree(BinaryTreeNode* node, int indent)
 {
-	if (node != nullptr) {
-		if (node->Right) {
-			PrintTree(node->Right, indent + 4);
-		}
-		if (indent) {
-			std::cout << std::setw(indent) << ' ';
-		}
-		if (node->Right) std::cout << " /\n" << std::setw(indent) << ' ';
-		std::cout << node->Data << "\n ";
-		if (node->Left) {
-			std::cout << std::setw(indent) << ' ' << " \\\n";
-			PrintTree(node->Left, indent + 4);
-		}
+	if (node != nullptr)
+	{
+		return;
 	}
+	
+	if (node->Right) 
+	{
+		PrintTree(node->Right, indent + 4);
+	}
+	
+	if (indent) 
+	{
+		std::cout << std::setw(indent) << ' ';
+	}
+	
+	if (node->Right)
+	{
+		std::cout << " /\n" << std::setw(indent) << ' ';
+	}
+	
+	std::cout << node->Data << "\n ";
+	if (node->Left) 
+	{
+		std::cout << '\t' << ' ' << " \\\n";
+		PrintTree(node->Left, indent + 4);
+	}
+	
 }
 
 
@@ -49,13 +74,13 @@ int GetElementConsole()
 	while (true)
 	{
 		std::string inputValue;
-		size_t length;
 		std::cout << "Enter menu Value: ";
 		std::getline(std::cin, inputValue);
 
 		try
 		{
-			int number = stoi(inputValue, &length);
+			size_t length;
+			const int number = stoi(inputValue, &length);
 			if (length == inputValue.length())
 			{
 				return number;
@@ -179,8 +204,7 @@ void Menu(BinaryTree* binaryTree)
 
 
 void Menu(Treap* treap)
-{
-	
+{	
 	InitializeTree(treap);
 	int valueForMenu;
 	int valueForTree;
@@ -193,7 +217,7 @@ void Menu(Treap* treap)
 			PrintTree(treap->Root, 3);
 		}
 
-		std::cout << "\n+===============================BinarySearchTree+===============================\n"
+		std::cout << "\n+===============================Treap+===============================\n"
 			<< "1 - AddNotOptimized\n"
 			<< "2 - RemoveNotOptimized\n"
 			<< "3 - Add\n"
@@ -202,6 +226,7 @@ void Menu(Treap* treap)
 			<< "6 - Show\n"
 			<< "7 - Exit\n";
 		valueForMenu = GetElementConsole();
+
 		switch (static_cast<MenuTreapOption>(valueForMenu))
 		{
 			case MenuTreapOption::AddNotOptimized:

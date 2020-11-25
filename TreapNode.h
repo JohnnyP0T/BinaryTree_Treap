@@ -3,7 +3,7 @@
 #ifndef _TREAPNODE_H_
 #define _TREAPNODE_H_
 
-/// @brief Узел Декартового дерева
+/// @brief Узел Декартового дерева.
 struct TreapNode
 {
 	int Key;
@@ -11,6 +11,5 @@ struct TreapNode
 	TreapNode* Left = nullptr;
 	TreapNode* Right = nullptr;
 };
-
 
 #endif //_TREAPNODE_H_

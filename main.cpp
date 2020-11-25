@@ -1,5 +1,6 @@
 #include "iostream"
 #include "Menu.h"
+#include <vld.h>
 
 
 int main()

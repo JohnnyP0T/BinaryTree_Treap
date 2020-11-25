@@ -26,7 +26,7 @@ BinaryTreeNode* Find(BinaryTreeNode* node, const int value)
 		return Find(node->Left, value);
 	}
 
-	return  Find(node->Right, value);
+	return Find(node->Right, value);
 }
 
 
@@ -73,13 +73,17 @@ void Insert(BinaryTreeNode*& node, const int value)
 
 	if(node->Data > value)
 	{
-		return Insert(node->Left, value);
+		Insert(node->Left, value);
+		return;
 	}
 	
-	return Insert(node->Right, value);
+	Insert(node->Right, value);
+	return;
 }
 
 
+/// @todo return void;
+/// тут так и должно быть. это надо для рекурсии.
 BinaryTreeNode* Remove(BinaryTreeNode*& node, const int value)
 {
 	if(node == nullptr)
@@ -91,18 +95,15 @@ BinaryTreeNode* Remove(BinaryTreeNode*& node, const int value)
 	{
 		node->Left = Remove(node->Left, value);
 	}
-
 	else if(value > node->Data)
 	{
 		node->Right = Remove(node->Right, value);
 	}
-
 	else if(node->Left != nullptr && node->Right != nullptr)
 	{
 		node->Data = FindMinimal(node->Right)->Data;
 		node->Right = Remove(node->Right, node->Data);
 	}
-
 	else
 	{
 		BinaryTreeNode* current = nullptr;

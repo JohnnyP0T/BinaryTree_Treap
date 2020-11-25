@@ -67,7 +67,7 @@ TreapNode* Merge(TreapNode* left, TreapNode* right)
 }
 
 
-void InsertNotOptimized(TreapNode*& node, int key, int priority)
+void InsertNotOptimized(TreapNode*& node, int key, int priority /* = rand()*/)
 {
 	TreapNode* newTreapNode = new TreapNode;
 	TreapNode* less = nullptr;
@@ -91,7 +91,7 @@ void RemoveNotOptimized(TreapNode*& node, int key)
 }
 
 
-void Insert(TreapNode*& node, int key, int priority)
+void Insert(TreapNode*& node, int key, int priority /* = rand()*/)
 {
 	if (node == nullptr)
 	{
