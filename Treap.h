@@ -49,7 +49,7 @@ void RemoveNotOptimized(TreapNode*& node, int key);
 /// @param node		Указатель на узел корня.
 /// @param key		Значение для вставки.
 /// @param priority Приоритет(рандомный поумолчянию).
-auto Insert(TreapNode*& node, int key, int priority = rand()) -> void;
+void Insert(TreapNode*& node, int key, int priority = rand());
 
 /// @brief Удаление элемента.
 /// @param node Указатель на узел корня.
